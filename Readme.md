@@ -2,14 +2,14 @@
 
 ###Tervek
 
- - [x] Bevétel hozzáadása adatbázishoz
- - [x] Kiadás hozzáadása az adatbázishoz
- - [] Az **index.php**-ben a kiadások/bevételek kilistázása __hónapokra__ lebontva
- - [] **Grafikon** készítése a kiadások/bevételekhez
- - [] Az **index.php**-ben a kiadások/bevételek szerkesztése/törlése
-    - [] Késöbb ezt admin jelszóval teheti meg bárki
- - [] Befektetések hozzáadása
-    - [] Külső _API_-ról nyomonköveti a befektetések aktualitását és el is menti adatbázisba
+ *- [x] Bevétel hozzáadása adatbázishoz
+ *- [x] Kiadás hozzáadása az adatbázishoz
+ *- [] Az **index.php**-ben a kiadások/bevételek kilistázása __hónapokra__ lebontva
+ *- [] **Grafikon** készítése a kiadások/bevételekhez
+ *- [] Az **index.php**-ben a kiadások/bevételek szerkesztése/törlése
+    *- [] Késöbb ezt admin jelszóval teheti meg bárki
+ *- [] Befektetések hozzáadása
+    *- [] Külső _API_-ról nyomonköveti a befektetések aktualitását és el is menti adatbázisba
 
 ---
 
