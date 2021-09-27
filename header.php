@@ -27,5 +27,8 @@
             <div class="menuelem">
                 <a href="admin.php" class="link">Admin szerkesztés</a>
             </div>
+            <div class="menuelem">
+                <a href="proba.php" class="link">Proba</a>
+            </div>
         </div>
     </nav>
