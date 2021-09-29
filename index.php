@@ -27,17 +27,26 @@
                 echo "<tr>
                         <td id='belista' class='hide' style='border: 1px solid; width: 150px'>".$row["id"]."</td>
                         <td id='input".$row["id"]."' class='hide'>
-                            <input id='adat".$row["id"]."' type='text' placeholder='tipus'>
+                            
+                            <select 'adat".$row["id"]."'>
+                                <option value='wolt'>Wolt</option>
+                                <option value='program'>Programozás</option>
+                                <option value='wordpress'>Wordpress</option>
+                                <option value='zsebpenz'>Zsebpénz</option>
+                                <option value='egyeb'>Egyéb</option>
+                            </select>
                         </td>
                         <td id='tipus".$row["id"]."' style='border: 1px solid; width: 150px'>".$row["tipus"]."</td>
                         <td id='input".$row["id"]."' class='hide'>
                             <input id='adat".$row["id"]."' type='text' placeholder='megnevezes'>
                         </td>
                         <td id='megnevezes".$row["id"]."' style='border: 1px solid; width: 150px'>".$row["megnevezes"]."</td>
-                            <td id='input".$row["id"]."' class='hide'><input id='adat".$row["id"]."' type='text' placeholder='ar'>
+                        <td id='input".$row["id"]."' class='hide'>
+                            <input id='adat".$row["id"]."' type='number' placeholder='ar'>
+                        </td>
                         <td id='ar".$row["id"]."' style='border: 1px solid; width: 150px'>".$row["mennyiseg"]."Ft</td>
                         <td id='input".$row["id"]."' class='hide'>
-                            <input id='adat".$row["id"]."' type='text' placeholder='datum'>
+                            <input id='adat".$row["id"]."' type='date'>
                         </td>
                         <td id='datum".$row["id"]."' style='border: 1px solid; width: 150px'>".$row["datum"]."</td>
                     </tr>";
