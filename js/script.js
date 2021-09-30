@@ -149,15 +149,15 @@ function bementes() {
 
     var elements = document.querySelectorAll("#adat"+input);
 
-    console.log("tipus: " + elements[0].value);
-    console.log("megnevezes: " + elements[1].value);
-    console.log("ar: " + elements[2].value);
-    console.log("datum: " + elements[3]);
-
     var tipus = elements[0].value;
     var megnevezes = elements[1].value;
     var ar = elements[2].value;
-    var datum = elements[3];
+    var datum = elements[3].value;
+    
+    console.log("tipus: " + tipus);
+    console.log("megnevezes: " + megnevezes);
+    console.log("ar: " + ar);
+    console.log("datum: " + datum);
 
     var value = tipus+","+megnevezes+","+ar+","+datum+","+input; 
 
@@ -170,7 +170,7 @@ function bementes() {
     xmlhttp.open("POST", "/includes/bedit.inc.php?");
     xmlhttp.send();
 
-    //window.location.reload();
+    window.location.reload();
 }
 
 function bdelete() {

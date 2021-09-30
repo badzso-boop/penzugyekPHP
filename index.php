@@ -27,8 +27,7 @@
                 echo "<tr>
                         <td id='belista' class='hide' style='border: 1px solid; width: 150px'>".$row["id"]."</td>
                         <td id='input".$row["id"]."' class='hide'>
-                            
-                            <select 'adat".$row["id"]."'>
+                            <select id='adat".$row["id"]."'>
                                 <option value='wolt'>Wolt</option>
                                 <option value='program'>Programozás</option>
                                 <option value='wordpress'>Wordpress</option>
@@ -82,7 +81,15 @@
                 echo "<tr>
                         <td id='kilista' class='hide' style='border: 1px solid; width: 150px'>".$row["id"]."</td>
                         <td id='input".$row["id"]."' class='hide'>
-                            <input id='adat".$row["id"]."' type='text' placeholder='tipus'>
+                            <select id='adat".$row["id"]."'>
+                                <option value='bevasarlas'>Bevásárlás</option>
+                                <option value='csekkek'>Csekkek</option>
+                                <option value='telefonszamla'>Telefonszámla</option>
+                                <option value='tankolas'>Tankolás</option>
+                                <option value='szorakozas'>Szórakozás</option>
+                                <option value='zsebpenz'>Zsebpénz</option>
+                                <option value='egyeb'>Egyéb</option>
+                            </select>
                         </td>
                         <td id='ktipus".$row["id"]."' style='border: 1px solid; width: 150px'>".$row["tipus"]."</td>
                         <td id='input".$row["id"]."' class='hide'>
@@ -94,7 +101,7 @@
                         </td>
                         <td id='kar".$row["id"]."' style='border: 1px solid; width: 150px'>".$row["mennyiseg"]."Ft</td>
                         <td id='input".$row["id"]."' class='hide'>
-                            <input id='adat".$row["id"]."' type='text' placeholder='datum'>
+                            <input id='adat".$row["id"]."' type='date'>
                         </td>
                         <td id='kdatum".$row["id"]."' style='border: 1px solid; width: 150px'>".$row["datum"]."</td>
                     </tr>";

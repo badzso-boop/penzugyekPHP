@@ -28,6 +28,9 @@
                 <a href="admin.php" class="link">Admin szerkesztés</a>
             </div>
             <div class="menuelem">
+                <a href="stat.php" class="link">Részletes statisztika</a>
+            </div>
+            <div class="menuelem">
                 <a href="proba.php" class="link">Proba</a>
             </div>
         </div>
