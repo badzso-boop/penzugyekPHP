@@ -48,35 +48,8 @@ function kiadasSzerk() {
             datum.classList.remove('hide');
         }
     }
-}
 
-function kimentes() {
-    var input = document.getElementById("kilista").value;
-
-    var elements = document.querySelectorAll("#adat"+input);
-
-    console.log("tipus: " + elements[0].value);
-    console.log("megnevezes: " + elements[1].value);
-    console.log("ar: " + elements[2].value);
-    console.log("datum: " + elements[3].value);
-
-    var tipus = elements[0].value;
-    var megnevezes = elements[1].value;
-    var ar = elements[2].value;
-    var datum = elements[3].value;
-
-    var value = tipus+","+megnevezes+","+ar+","+datum+","+input; 
-
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            sendPHP(value, "1000", "keditKuki");
-        }
-    };
-    xmlhttp.open("POST", "/includes/kedit.inc.php?");
-    xmlhttp.send();
-
-    window.location.reload();
+    document.getElementById("id"+input).value = input;
 }
 
 function kidelete() {
@@ -142,39 +115,13 @@ function bevetelSzerk() {
             datum.classList.remove('hide');
         }
     }
-}
 
-function bementes() {
-    var input = document.getElementById("belista").value;
-
-    var elements = document.querySelectorAll("#adat"+input);
-
-    var tipus = elements[0].value;
-    var megnevezes = elements[1].value;
-    var ar = elements[2].value;
-    var datum = elements[3].value;
-    
-    console.log("tipus: " + tipus);
-    console.log("megnevezes: " + megnevezes);
-    console.log("ar: " + ar);
-    console.log("datum: " + datum);
-
-    var value = tipus+","+megnevezes+","+ar+","+datum+","+input; 
-
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            sendPHP(value, "1000", "beditKuki");
-        }
-    };
-    xmlhttp.open("POST", "/includes/bedit.inc.php?");
-    xmlhttp.send();
-
-    window.location.reload();
+    document.getElementById("id"+input).value = input;
 }
 
 function bdelete() {
     var input = document.getElementById("belista").value;
+
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         console.log(`A ${input} id-val rendelkező sor törölve lett!`)
@@ -190,7 +137,7 @@ function sendPHP(value, days, name) {
     var expires = "";      
     if (days) {
         var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
+        date.setTime(date.getTime() + (100*1000));
         expires = "; expires=" + date.toUTCString();
     }
          

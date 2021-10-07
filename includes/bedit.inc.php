@@ -2,13 +2,20 @@
 require_once 'dbh.inc.php';
 require_once "functions.inc.php";
 
-$kuki = $_COOKIE["beditKuki"];
-$adatok = explode(",", $kuki);
+$tipus = $_POST['btipus'];
+$megnevezes = $_POST['bmegnevezes'];
+$ar = $_POST['bar'];
+$datum = $_POST['bdatum'];
+$id = $_POST['bid'];
 
-$sql = "UPDATE bevetelek SET tipus='$adatok[0]', megnevezes='$adatok[1]', mennyiseg='$adatok[2]', datum='$adatok[3]' WHERE id='$adatok[4]'";
+$sql = "UPDATE bevetelek SET tipus='$tipus', megnevezes='$megnevezes', mennyiseg='$ar', datum='$datum' WHERE id='$id'";
 
 if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";
+    header("location: ../index.php?error=none");
+    exit();
 } else {
     echo "Error updating record: " . $conn->error;
+    header("location: ../index.php?error=sqlerror");
+    exit();
 }

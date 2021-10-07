@@ -26,5 +26,5 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 */
-echo $_COOKIE["keditKuki"];
+echo $_POST['tipus'];
 ?>
