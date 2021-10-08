@@ -2,7 +2,7 @@
     include_once 'header.php';
 ?>
 
-<section class="bevetel">
+<section>
     <h2>Kiadás hozzáadása</h2>
     <div class="form">
         <form action="includes/issuance_add.inc.php" method="post">
