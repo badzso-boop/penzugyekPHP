@@ -56,8 +56,98 @@
         } else {
             echo "<li>Nincsen eredmény!</li>";
         }
+
+        $sql2 = "SELECT mennyiseg FROM bevetelek";
+        $result = $conn->query($sql2);
+        $ossz = 0;
+
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $ossz += $row["mennyiseg"];
+            }
+        }
+        $ossz = number_format($ossz, 2, ',', ' ');
+        echo "<tr>
+                <td style='border: 1px solid; width: 600px' colspan = '4'>Összes kiadás: ".$ossz."Ft</td>
+              </tr>";
     ?>
 </table>
+
+<div>
+        <h2>Részletes bevételek</h2>
+        <form action="index.php" method="post">
+            <input type="number" placeholder="év" name="sev">
+            <input type="number" placeholder="hónap" name="shonap">
+            <select name='stipus'>
+                <option value=''>Kérem válasszon!</option>
+                <option value='wolt'>Wolt</option>
+                <option value='program'>Programozás</option>
+                <option value='wordpress'>Wordpress</option>
+                <option value='zsebpenz'>Zsebpénz</option>
+                <option value='egyeb'>Egyéb</option>
+            </select>
+            <input type="text" placeholder="Megnevezes" name="smegnevezes">
+            <button type="submit" name="ssubmit">Választ</button>
+            <button type="submit" name="sdelete">Törlés</button>
+        </form>
+        <table>
+            <tr>
+                <td style="width:150px; border-bottom: 2px solid black;">Típus</td>
+                <td style="width:150px; border-bottom: 2px solid black;">Megnevezés</td>
+                <td style="width:150px; border-bottom: 2px solid black;">Ár</td>
+                <td style="width:150px; border-bottom: 2px solid black;">Dátum</td>
+            </tr>
+        <?php
+            require_once 'includes/dbh.inc.php';
+            require_once "includes/functions.inc.php";
+
+            if(isset($_POST["ssubmit"]))
+            {
+                $ev = $_POST["sev"];
+                $honap = $_POST["shonap"];
+                $tipus = $_POST["stipus"];
+                $megnevezes = $_POST["smegnevezes"];
+
+                $datum = $ev."-".$honap;
+                $ossz = 0;
+
+                $sql45 = "SELECT * FROM bevetelek WHERE datum LIKE '$datum%' or tipus='$tipus' or megnevezes='$megnevezes'";
+
+                $result = $conn->query($sql45);
+                if($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $ossz += $row["mennyiseg"];
+                        echo "<tr>
+                                <td style='border: 1px solid; width: 150px'>".$row["tipus"]."</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["megnevezes"]."</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["mennyiseg"]."Ft</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["datum"]."</td>
+                            </tr>";
+                    }
+                    $ossz = number_format($ossz, 2, ',', ' ');
+                    echo "<tr>
+                            <td style='border: 1px solid; width: 600px' colspan = '4'>Összes bevétel: ".$ossz."Ft</td>
+                        </tr>";
+                }
+            }
+            if(isset($_POST["sdelete"]))
+            {
+                $sql45 = "SELECT * FROM bevetelek WHERE datum LIKE '1966-10'";
+                $result = $conn->query($sql45);
+                if($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>
+                                <td style='border: 1px solid; width: 150px'>".$row["tipus"]."</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["megnevezes"]."</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["mennyiseg"]."Ft</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["datum"]."</td>
+                            </tr>";
+                    }
+                }
+            }
+        ?>
+        </table>
+</div>
 
 <h2>Kiadás</h2>
 <button type="submit" id="kszerkesztes" onclick="kszerkesztes()">Szerkesztés</button>
@@ -117,6 +207,80 @@
         }
     ?>
 </table>
+<h2>Részletes bevételek</h2>
+        <form action="index.php" method="post">
+            <input type="number" placeholder="év" name="kev">
+            <input type="number" placeholder="hónap" name="khonap">
+            <select name='ktipus'>
+                <option value=''>Kérem válasszon!</option>
+                <option value='wolt'>Wolt</option>
+                <option value='program'>Programozás</option>
+                <option value='wordpress'>Wordpress</option>
+                <option value='zsebpenz'>Zsebpénz</option>
+                <option value='egyeb'>Egyéb</option>
+            </select>
+            <input type="text" placeholder="Megnevezes" name="kmegnevezes">
+            <button type="submit" name="ksubmit">Választ</button>
+            <button type="submit" name="kdelete">Törlés</button>
+        </form>
+        <table>
+            <tr>
+                <td style="width:150px; border-bottom: 2px solid black;">Típus</td>
+                <td style="width:150px; border-bottom: 2px solid black;">Megnevezés</td>
+                <td style="width:150px; border-bottom: 2px solid black;">Ár</td>
+                <td style="width:150px; border-bottom: 2px solid black;">Dátum</td>
+            </tr>
+        <?php
+            require_once 'includes/dbh.inc.php';
+            require_once "includes/functions.inc.php";
+
+            if(isset($_POST["ksubmit"]))
+            {
+                $ev = $_POST["kev"];
+                $honap = $_POST["khonap"];
+                $tipus = $_POST["ktipus"];
+                $megnevezes = $_POST["kmegnevezes"];
+
+                $datum = $ev."-".$honap;
+                $ossz = 0;
+
+                $sql55 = "SELECT * FROM kiadas WHERE datum LIKE '$datum%' or tipus='$tipus' or megnevezes='$megnevezes'";
+
+                $result = $conn->query($sql55);
+                if($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $ossz += $row["mennyiseg"];
+                        echo "<tr>
+                                <td style='border: 1px solid; width: 150px'>".$row["tipus"]."</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["megnevezes"]."</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["mennyiseg"]."Ft</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["datum"]."</td>
+                            </tr>";
+                    }
+                    $ossz = number_format($ossz, 2, ',', ' ');
+                    echo "<tr>
+                            <td style='border: 1px solid; width: 600px' colspan = '4'>Összes kiadás: ".$ossz."Ft</td>
+                        </tr>";
+                }
+            }
+            if(isset($_POST["kdelete"]))
+            {
+                $sql55 = "SELECT * FROM kiadas WHERE datum LIKE '1966-10'";
+                $result = $conn->query($sql55);
+                if($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>
+                                <td style='border: 1px solid; width: 150px'>".$row["tipus"]."</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["megnevezes"]."</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["mennyiseg"]."Ft</td>
+                                <td style='border: 1px solid; width: 150px'>".$row["datum"]."</td>
+                            </tr>";
+                    }
+                }
+            }
+        ?>
+        </table>
+</div>
 
 <?php
     include_once 'footer.php';
