@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    <!--Navigation-->
+<!--Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php">Költségvetés</a>
@@ -26,11 +26,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="index.php">Főoldal</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="income_add.php">Bevétel Hozzáadása</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="issuance_add.php">Kiadás hozzáadása</a>
                 </li>
+                <?php
+                    if (isset($_SESSION["useruid"])) {
+                        echo "<li class='nav-item'><span class='nav-link'>".$_SESSION["useruid"]."</span></li>";
+                        echo "<li class='nav-item'><a class='nav-link' href='logout.php'>Kilépés</a></li>";
+                    }
+                    else {
+                        echo "<li class='nav-item'><a class='nav-link' href='signup.php'>Regisztráció</a></li>";
+                        echo "<li class='nav-item'><a class='nav-link' href='login.php'>Belépés</a></li>";
+                    }
+                ?>
             </ul>
         </div>
     </div>

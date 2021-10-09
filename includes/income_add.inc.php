@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if(isset($_POST["submit"])) {
 
@@ -7,6 +8,7 @@ if(isset($_POST["submit"])) {
     $bquantity = $_POST["bquantity"];
     $btype = $_POST["btype"];
     $bdate = $_POST["bdate"];
+    $buid = $_SESSION["userid"];
     
     require_once 'dbh.inc.php';
     require_once "functions.inc.php";
@@ -28,6 +30,12 @@ if(isset($_POST["submit"])) {
         exit();
     }
 
+    //Be van e lepve a felhasznalo
+    if(isset($_SESSION["useruid"]) == false) {
+        header("location: ../income_add.php?error=login");
+        exit();
+    }
+
     //Rossz típus
     if(badBtype($btype) == true) {
         header("location: ../income_add.php?error=wrongbtype");
@@ -35,7 +43,7 @@ if(isset($_POST["submit"])) {
     }
     
     //Itt már nem lehet hiba a feltöltésben úgyhogy feltöltjük
-    income_upload($conn, $bname, $bquantity, $btype, $bdate);
+    income_upload($conn, $bname, $bquantity, $btype, $bdate, $buid);
 } 
 else {
     header("location: ../income_add.php");
