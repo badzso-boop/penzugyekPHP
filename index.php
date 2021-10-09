@@ -23,7 +23,12 @@
             <?php 
                 require_once 'includes/dbh.inc.php';
 
-                $uid = $_SESSION["userid"];
+                if(isset($_SESSION["userid"])) {
+                    $uid = $_SESSION["userid"];
+                }
+                else {
+                    $uid = -1;
+                }
 
                 $sql = "SELECT * FROM bevetelek WHERE uid='$uid'";
                 $result = $conn->query($sql);
@@ -69,7 +74,12 @@
                     echo "<li>Nincsen eredmény!</li>";
                 }
 
-                $uid = $_SESSION["userid"];
+                if(isset($_SESSION["userid"])) {
+                    $uid = $_SESSION["userid"];
+                }
+                else {
+                    $uid = -1;
+                }
                 $sql2 = "SELECT mennyiseg FROM bevetelek WHERE uid='$uid'";
                 $result = $conn->query($sql2);
                 $ossz = 0;
@@ -203,7 +213,12 @@
                     <?php 
                         require_once 'includes/dbh.inc.php';
 
-                        $uid = $_SESSION["userid"];
+                        if(isset($_SESSION["userid"])) {
+                            $uid = $_SESSION["userid"];
+                        }
+                        else {
+                            $uid = -1;
+                        }
 
                         $sql = "SELECT * FROM kiadas WHERE uid='$uid'";
                         $result = $conn->query($sql);
@@ -251,7 +266,12 @@
                             echo "<li>Nincsen eredmény!</li>";
                         }
 
-                        $uid = $_SESSION["userid"];
+                        if(isset($_SESSION["userid"])) {
+                            $uid = $_SESSION["userid"];
+                        }
+                        else {
+                            $uid = -1;
+                        }
                         $sql2 = "SELECT mennyiseg FROM kiadas WHERE uid='$uid'";
                         $result = $conn->query($sql2);
                         $ossz = 0;
