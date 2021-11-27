@@ -46,6 +46,6 @@ if(isset($_POST["submit"])) {
     income_upload($conn, $bname, $bquantity, $btype, $bdate, $buid);
 } 
 else {
-    header("location: ../income_add.php");
+    header("location: ../index.php");
     exit();
 }

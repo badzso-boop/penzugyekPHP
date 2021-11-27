@@ -63,6 +63,7 @@ function kidelete() {
     xmlhttp.send();
 
     window.location.reload();
+    window.location.reload();
 }
 
 function bszerkesztes() {
@@ -130,6 +131,7 @@ function bdelete() {
     xmlhttp.open("POST", "/includes/bdelete.inc.php?");
     xmlhttp.send();
 
+    window.location.reload();
     window.location.reload();
 }
 

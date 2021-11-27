@@ -46,6 +46,6 @@ if(isset($_POST["submit"])) {
     issuance_upload($conn, $kname, $kquantity, $ktype, $kdate, $kuid);
 } 
 else {
-    header("location: ../issuance_add.php");
+    header("location: ../index.php");
     exit();
 }
